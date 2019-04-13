@@ -26,17 +26,21 @@
 
 
 
-
-with open('D:\ldresult.txt','a',encoding='utf-8') as ldresult_obj:
-	with open('D:\citou.txt',encoding='utf-8') as citou_obj:
-		with open('D:\ld.txt',encoding='utf-8') as ld_obj:
+n=0
+with open('ldresult.txt','a',encoding='utf-8') as ldresult_obj:
+	with open('citou.txt',encoding='utf-8') as citou_obj:
+		with open('ld.txt',encoding='utf-8') as ld_obj:
 			for row in citou_obj:
-			
+			    
 				for line in ld_obj:
-					
 					row=str(row)
 					row=row.strip('\r\n')
-					line=str(line)					if line.startswith(row):						ldresult_obj.write('</>\n')						ldresult_obj.write(row)						ldresult_obj.write('\n')						ldresult_obj.write(line)						break					else:						ldresult_obj.write(line)			         		    							
+					line=str(line)					if line.startswith(row):						ldresult_obj.write('</>\n')						ldresult_obj.write(row)						ldresult_obj.write('\n')						ldresult_obj.write(line)						break					elif n==1000:
+						print(row)
+						print(line)
+						break
+					else:
+						n=n+1						ldresult_obj.write(line)			         		    							
 							
 						
 					    
